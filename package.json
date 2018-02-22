@@ -1,5 +1,5 @@
 {
-  "name": "homebridge-http-accessory",
+  "name": "homebridge-http-sensor",
   "version": "1.1.5",
   "description": "http plugin for homebridge: https://github.com/nfarina/homebridge",
   "license": "ISC",
@@ -10,15 +10,15 @@
     "node": ">=0.12.0",
     "homebridge": ">=0.4.0"
   },
-  "author": "tasict",
+  "author": "skareemoff",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/tasict/homebridge-http-accessory"
+    "url": "git+https://github.com/skareemoff/homebridge-http-sensor"
   },
   "dependencies": {
     "request": "^2.65.0",
     "polling-to-event": ">=2.0.2",
     "hap-nodejs": ">=0.4.25"
   },
-  "homepage": "https://github.com/tasict/homebridge-http-accessory#readme"
+  "homepage": "https://github.com/skareemoff/homebridge-http-sensor"
 }

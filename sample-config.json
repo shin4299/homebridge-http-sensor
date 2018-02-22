@@ -1,79 +1,24 @@
 {
-	"bridge": {
-		"name": "Homebridge",
-		"username": "C1:38:5A:AC:39:40",
-		"port": 51826,
-		"pin": "000-00-000"
-	},
-	"description": "This is an example configuration for the Everything Homebridge plugin",
-	"accessories": [
-		{
-			"accessory": "Httpeverything",
-			"service": "Thermostat",
-			"name": "Thermostat (Maison)",
-			"apiBaseUrl": "http://localhost:8080/thermostat",
-			"apiSuffixUrl": "",
-			"forceRefreshDelay": 0
-		},
-		{
-			"accessory": "Httpeverything",
-			"service": "WindowCovering",
-			"name": "Volet (Salon)",
-			"apiBaseUrl": "http://localhost:8080/window-covering",
-			"apiSuffixUrl": "/0",
-			"forceRefreshDelay": 0
-		},
-		{
-			"accessory": "Httpeverything",
-			"service": "WindowCovering",
-			"name": "Volet (Salle à manger)",
-			"apiBaseUrl": "http://localhost:8080/window-covering",
-			"apiSuffixUrl": "/1",
-			"forceRefreshDelay": 0
-		},
-		{
-			"accessory": "Httpeverything",
-			"service": "WindowCovering",
-			"name": "Volet (Bureau)",
-			"apiBaseUrl": "http://localhost:8080/window-covering",
-			"apiSuffixUrl": "/2",
-			"forceRefreshDelay": 0
-		},
-		{
-			"accessory": "Httpeverything",
-			"service": "WindowCovering",
-			"name": "Volet (Cuisine)",
-			"apiBaseUrl": "http://localhost:8080/window-covering",
-			"apiSuffixUrl": "/3",
-			"forceRefreshDelay": 0
-		},
-				{
-			"accessory": "Httpeverything",
-			"service": "WindowCovering",
-			"name": "Volets (Maison)",
-			"apiBaseUrl": "http://localhost:8080/window-covering",
-			"apiSuffixUrl": "/all",
-			"forceRefreshDelay": 0
-		},
-		{
-			"accessory": "Httpeverything",
-			"service": "HumiditySensor",
-			"name": "Humidité",
-			"apiBaseUrl": "http://localhost:8080/humidity-sensor",
-			"apiSuffixUrl": "",
-			"forceRefreshDelay": 0
-		},
-		{
-			"accessory": "Httpeverything",
-			"service": "TemperatureSensor",
-			"name": "Temp. Ext.",
-			"apiBaseUrl": "http://localhost:8080/temperature-sensor",
-			"apiSuffixUrl": "",
-			"forceRefreshDelay": 0,
-			"optionCharacteristic":[]
-		}
-		
-		
-	],
-	"platforms": []
-}
+  "accessory": "HttpSensor",
+  "service": "HumiditySensor",
+  "name": "Humidity",
+  "apiBaseUrl": "http://192.168.1.66:3004/",
+  "apiSuffixUrl": "humidity",
+  "forceRefreshDelay": 0
+},
+{
+  "accessory": "HttpSensor",
+  "service": "TemperatureSensor",
+  "name": "Temperature",
+  "apiBaseUrl": "http://192.168.1.66:3004/",
+  "apiSuffixUrl": "temperature",
+  "forceRefreshDelay": 0
+},
+{
+  "accessory": "HttpSensor",
+  "service": "AirQualitySensor",
+  "name": "Air Quality",
+  "apiBaseUrl": "http://192.168.1.66:3004/",
+  "apiSuffixUrl": "airQuality",
+  "forceRefreshDelay": 0
+},
