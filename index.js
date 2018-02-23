@@ -51,7 +51,7 @@ HttpSensor.prototype =
 			}.bind(this));
 		}.bind(this);
 
-		var newService = null;
+		var newService = null
 		switch (this.service) {
 			case "AirQualitySensor": newService = new Service.AirQualitySensor(this.name); break;
 			case "CarbonDioxideSensor": newService = new Service.CarbonDioxideSensor(this.name); break;
@@ -62,6 +62,6 @@ HttpSensor.prototype =
 			case "MotionSensor": newService = new Service.MotionSensor(this.name); break;
 			case "SmokeSensor": newService = new Service.SmokeSensor(this.name); break;
 			case "TemperatureSensor": newService = new Service.TemperatureSensor(this.name); break;
-			default: newService = null
+			default: newService = null;
 		}
-};
+}
