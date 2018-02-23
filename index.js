@@ -62,6 +62,8 @@ HttpSensor.prototype =
 			case "MotionSensor": newService = new Service.MotionSensor(this.name); break;
 			case "SmokeSensor": newService = new Service.SmokeSensor(this.name); break;
 			case "TemperatureSensor": newService = new Service.TemperatureSensor(this.name); break;
-			default: newService = null;
+			default: newService = null
 		}
-}
+		return [newService];
+	}
+};
