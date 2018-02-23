@@ -1,7 +1,3 @@
-# homebridge http accessory
-
-Supports all devices on HomeBridge Platform / Bridges devices to http
-
 # Installation
 
 1. Install homebridge using: npm install -g homebridge
