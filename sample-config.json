@@ -1,7 +1,7 @@
 {
   "accessory": "HttpSensor",
   "service": "HumiditySensor",
-  "name": "Humidity",
+  "name": "Miriam Humidity",
   "apiBaseUrl": "http://192.168.1.66:3004/",
   "apiSuffixUrl": "humidity",
   "forceRefreshDelay": 0
@@ -9,7 +9,7 @@
 {
   "accessory": "HttpSensor",
   "service": "TemperatureSensor",
-  "name": "Temperature",
+  "name": "Miriam Temperature",
   "apiBaseUrl": "http://192.168.1.66:3004/",
   "apiSuffixUrl": "temperature",
   "forceRefreshDelay": 0
@@ -17,8 +17,48 @@
 {
   "accessory": "HttpSensor",
   "service": "AirQualitySensor",
-  "name": "Air Quality",
+  "name": "Miriam Air Quality",
   "apiBaseUrl": "http://192.168.1.66:3004/",
   "apiSuffixUrl": "airQuality",
   "forceRefreshDelay": 0
 },
+{
+  "accessory": "HttpSensor",
+  "service": "SmokeSensor",
+  "name": "Miriam Gas sensor",
+  "apiBaseUrl": "http://192.168.1.66:3004/",
+  "apiSuffixUrl": "gas",
+  "forceRefreshDelay": 0
+},
+{
+  "accessory": "HttpSensor",
+  "service": "HumiditySensor",
+  "name": "Basement Humidity",
+  "apiBaseUrl": "http://192.168.1.68:3004/",
+  "apiSuffixUrl": "humidity",
+  "forceRefreshDelay": 0
+},
+{
+  "accessory": "HttpSensor",
+  "service": "TemperatureSensor",
+  "name": "Basement Temperature",
+  "apiBaseUrl": "http://192.168.1.68:3004/",
+  "apiSuffixUrl": "temperature",
+  "forceRefreshDelay": 0
+},
+{
+  "accessory": "HttpSensor",
+  "service": "AirQualitySensor",
+  "name": "Basement Air Quality",
+  "apiBaseUrl": "http://192.168.1.68:3004/",
+  "apiSuffixUrl": "airQuality",
+  "forceRefreshDelay": 0
+},
+{
+  "accessory": "HttpSensor",
+  "service": "SmokeSensor",
+  "name": "Basement Gas sensor",
+  "apiBaseUrl": "http://192.168.1.66:3004/",
+  "apiSuffixUrl": "gas",
+  "forceRefreshDelay": 0
+}
