@@ -90,19 +90,24 @@ try:
          data['airQuality'] = air_quality_score
          data['gas'] = gas
 
-         // translating into HomeKit definition
-        // Characteristic.AirQuality.EXCELLENT = 1;
-        // Characteristic.AirQuality.GOOD = 2;
-        // Characteristic.AirQuality.FAIR = 3;
-        // Characteristic.AirQuality.INFERIOR = 4;
-        // Characteristic.AirQuality.POOR = 5;
+         # translating into HomeKit definition
+         # Characteristic.AirQuality.EXCELLENT = 1;
+         # Characteristic.AirQuality.GOOD = 2;
+         # Characteristic.AirQuality.FAIR = 3;
+         # Characteristic.AirQuality.INFERIOR = 4;
+         # Characteristic.AirQuality.POOR = 5;
 
-         var airQuality;
-         if(air_quality_score > 99) airQuality = 1;
-         else if(air_quality_score > 95) airQuality = 2;
-         else if(air_quality_score > 80) airQuality = 3;
-         else if(air_quality_score > 50) airQuality = 4;
-         else airQuality = 5;
+         airQuality = 0;
+         if air_quality_score > 99:
+            airQuality = 1;
+         elif air_quality_score > 95:
+            airQuality = 2;
+         elif air_quality_score > 80:
+            airQuality = 3;
+         elif air_quality_score > 50:
+            airQuality = 4;
+         else:
+            airQuality = 5;
 
          env = {}
          env['environment'] = data
@@ -110,7 +115,7 @@ try:
          env['temperature'] = { 'temperature' : sensor.data.temperature }
          env['humidity'] = { 'humidity' : hum }
          env['airQuality'] = { 'airQuality' : air_quality_score }
-         env['airQualityRating'] = { 'airQuality' : airQuality }
+         env['airQualityRating'] = { 'airQualityRating' : airQuality }
          env['gas'] = { 'gas' : gas }
 
          with open("/home/pi/environment.json", "w") as jfp:
