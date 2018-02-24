@@ -24,14 +24,6 @@
 },
 {
   "accessory": "HttpSensor",
-  "service": "SmokeSensor",
-  "name": "Miriam Gas sensor",
-  "apiBaseUrl": "http://192.168.1.66:3004/",
-  "variableName": "gas",
-  "forceRefreshDelay": 0
-},
-{
-  "accessory": "HttpSensor",
   "service": "HumiditySensor",
   "name": "Basement Humidity",
   "apiBaseUrl": "http://192.168.1.68:3004/",
@@ -52,13 +44,5 @@
   "name": "Basement Air Quality",
   "apiBaseUrl": "http://192.168.1.68:3004/",
   "variableName": "airQuality",
-  "forceRefreshDelay": 0
-},
-{
-  "accessory": "HttpSensor",
-  "service": "SmokeSensor",
-  "name": "Basement Gas sensor",
-  "apiBaseUrl": "http://192.168.1.66:3004/",
-  "variableName": "gas",
   "forceRefreshDelay": 0
 }
