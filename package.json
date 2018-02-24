@@ -1,18 +1,14 @@
 {
   "name": "homebridge-http-sensor",
-  "version": "2.1",
-  "description": "http plugin for homebridge: https://github.com/nfarina/homebridge",
+  "version": "2.1.0",
+  "description": "http plugin for homebridge",
   "license": "ISC",
-  "keywords": [
-    "homebridge-plugin"
-  ],
-  "engines": {
-    "homebridge": ">=0.4.0"
-  },
+  "keywords": ["homebridge-plugin"],
+  "engines": { "homebridge": ">=0.4.0" },
   "author": "skareemoff",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/skareemoff/homebridge-http-sensor"
+    "url": "git+https://github.com/skareemoff/homebridge-http-sensor.git"
   },
   "dependencies": {
     "request": "^2.65.0",
