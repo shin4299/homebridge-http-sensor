@@ -39,6 +39,7 @@ HttpSensor.prototype =
 	},
 
 	getServices: function () {
+
 		var getDispatch = function (callback, characteristic)
 		{
 			var actionName = "get" + characteristic.displayName.replace(/\s/g, '')
@@ -47,8 +48,8 @@ HttpSensor.prototype =
 			{
 				if (!err && response.statusCode == 200)
 				{
-					this.log("getDispatch:returnedvalue: ", JSON.parse(body)[this.variableName].value);
-					callback(null, JSON.parse(body)[this.variableName].value);
+					this.log("getDispatch:returnedvalue: ", JSON.parse(body)[this.variableName]);
+					callback(null, JSON.parse(body)[this.variableName]);
 				}
 				else
 				{
@@ -115,12 +116,9 @@ HttpSensor.prototype =
 
 		function makeHelper(characteristic)
 		{
-			return
-			{
-				getter: function (callback)
-				{
+			return {
+				getter: function (callback)	{
 					var actionName = "get" + characteristic.displayName.replace(/\s/g, '');
-					console.log("1this.emitterActionNames[actionName]", this.emitterActionNames[actionName]);
 					if (this.forceRefreshDelay == 0)
 					{
 						getDispatch(callback, characteristic);
@@ -140,8 +138,8 @@ HttpSensor.prototype =
 
 								if (!err && response.statusCode == 200)
 								{
-									this.log("getRafale:actionName:value: ", actionName, JSON.parse(body)[this.variableName].value);
-									done(null, JSON.parse(body)[this.variableName].value);
+									this.log("getRafale:actionName:value: ", actionName, JSON.parse(body)[this.variableName]);
+									done(null, JSON.parse(body)[this.variableName]);
 								}
 								else
 								{
