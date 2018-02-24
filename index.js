@@ -20,7 +20,7 @@ function HttpSensor(log, config)
 	this.statusEmitters = [];
 }
 
-Httpeverything.prototype =
+HttpSensor.prototype =
 {
 	//Start
 	identify: function (callback)
