@@ -2,7 +2,7 @@
   "accessory": "HttpSensor",
   "service": "HumiditySensor",
   "name": "Miriam Humidity",
-  "apiBaseUrl": "http://192.168.1.66:3004/",
+  "apiBaseUrl": "http://192.168.1.66:3004/humidity",
   "variableName": "humidity",
   "forceRefreshDelay": 0
 },
@@ -10,7 +10,7 @@
   "accessory": "HttpSensor",
   "service": "TemperatureSensor",
   "name": "Miriam Temperature",
-  "apiBaseUrl": "http://192.168.1.66:3004/",
+  "apiBaseUrl": "http://192.168.1.66:3004/temperature",
   "variableName": "temperature",
   "forceRefreshDelay": 0
 },
@@ -18,7 +18,7 @@
   "accessory": "HttpSensor",
   "service": "AirQualitySensor",
   "name": "Miriam Air Quality",
-  "apiBaseUrl": "http://192.168.1.66:3004/",
+  "apiBaseUrl": "http://192.168.1.66:3004/airQuality",
   "variableName": "airQuality",
   "forceRefreshDelay": 0
 },
@@ -26,7 +26,7 @@
   "accessory": "HttpSensor",
   "service": "HumiditySensor",
   "name": "Basement Humidity",
-  "apiBaseUrl": "http://192.168.1.68:3004/",
+  "apiBaseUrl": "http://192.168.1.68:3004/humidity",
   "variableName": "humidity",
   "forceRefreshDelay": 0
 },
@@ -34,7 +34,7 @@
   "accessory": "HttpSensor",
   "service": "TemperatureSensor",
   "name": "Basement Temperature",
-  "apiBaseUrl": "http://192.168.1.68:3004/",
+  "apiBaseUrl": "http://192.168.1.68:3004/temperature",
   "variableName": "temperature",
   "forceRefreshDelay": 0
 },
@@ -42,7 +42,7 @@
   "accessory": "HttpSensor",
   "service": "AirQualitySensor",
   "name": "Basement Air Quality",
-  "apiBaseUrl": "http://192.168.1.68:3004/",
+  "apiBaseUrl": "http://192.168.1.68:3004/airQuality",
   "variableName": "airQuality",
   "forceRefreshDelay": 0
 }
