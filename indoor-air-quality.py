@@ -100,7 +100,7 @@ try:
          airQuality = 0;
          if air_quality_score > 95:
             airQuality = 1;
-        elif air_quality_score > 90:
+         elif air_quality_score > 90:
             airQuality = 2;
          elif air_quality_score > 80:
             airQuality = 3;

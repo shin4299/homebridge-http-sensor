@@ -43,7 +43,7 @@ HttpSensor.prototype = {
         url: this.apiBaseUrl + this.apiSuffixUrl
       }, function(err, response, body) {
         if (!err && response.statusCode == 200) {
-          this.log("getDispatch:returnedvalue: ", JSON.parse(body)[this.parameterName]);
+					this.log("-----------------> getDispatch:returnedValue: ", parameterName, body, JSON.parse(body)[this.parameterName]);
           callback(null, JSON.parse(body)[this.parameterName]);
         } else {
           this.log("Error getting state: %s", parameterName, err);
@@ -260,6 +260,7 @@ HttpSensor.prototype = {
               }, function(err, response, body) {
 
                 if (!err && response.statusCode == 200) {
+									this.log("-----------------> getDispatch:actionName:value: ", parameterName, body, JSON.parse(body)[this.parameterName]);
                   done(null, JSON.parse(body)[this.parameterName]);
                 } else {
                   done(null, null);

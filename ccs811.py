@@ -30,7 +30,7 @@ if not ccs.readData():
   airQuality = 0;
   if data['co2'] < 1000:
      airQuality = 1;
- elif data['co2'] < 5000:
+  elif data['co2'] < 5000:
      airQuality = 2;
  elif data['co2'] < 2000:
      airQuality = 3;
@@ -47,7 +47,7 @@ if not ccs.readData():
   	'CarbonDioxideLevel' : data['co2'],
 	'VOCDensity' : data['tvoc'],
 	'CarbonDioxideDetected':co2detected,
-	'AirQuality':airQuality 
+	'AirQuality':airQuality
   }
 
   with open("/home/pi/environment.json", "w") as jfp:
