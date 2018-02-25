@@ -3,7 +3,7 @@
   "service": "CarbonDioxideSensor",
   "optionCharacteristic":"CarbonDioxideLevel",
   "name": "Lola CO2",
-  "apiBaseUrl": "http://192.168.1.65:3004/co2",
+  "apiBaseUrl": "http://192.168.1.65:3004/air",
   "forceRefreshDelay": 0
 },
 {
