@@ -80,7 +80,7 @@ try:
          timestamp = datetime.datetime.now().replace(microsecond=0).isoformat()
 
          f = open("/home/pi/environment.csv", "a")
-         f.write("{0}, {1:.2f}, {2:.2f}, {3:.2f}, {4:.2f}, {5}\n".format(timestamp, sensor.data.temperature, hum, air_quality_score, gas, sensor.pressure))
+         f.write("{0}, {1:.2f}, {2:.2f}, {3:.2f}, {4:.2f}, {5}\n".format(timestamp, sensor.data.temperature, hum, air_quality_score, gas, sensor.data.pressure))
          f.close()
 
          data = {}
@@ -89,7 +89,7 @@ try:
          data['humidity'] = hum
          data['airQuality'] = air_quality_score
          data['gas'] = gas
-         data['pressure'] = sensor.pressure
+         data['pressure'] = sensor.data.pressure
 
          # translating into HomeKit definition
          # Characteristic.AirQuality.EXCELLENT = 1;
