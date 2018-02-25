@@ -112,11 +112,13 @@ try:
          env = {}
          env['environment'] = data
          env['timestamp'] = { 'timestamp' : data['timestamp'] }
-         env['temperature'] = { 'temperature' : sensor.data.temperature }
-         env['humidity'] = { 'humidity' : hum }
-         env['airQuality'] = { 'airQuality' : air_quality_score }
-         env['airQualityRating'] = { 'airQualityRating' : airQuality }
-         env['gas'] = { 'gas' : gas }
+         env['temperature'] = { 'CurrentTemperature' : sensor.data.temperature }
+         env['humidity'] = { 'CurrentRelativeHumidity' : hum }
+         env['air'] = {
+            'airQuality' : air_quality_score,
+            'AirQuality' : airQuality,
+            'VOCDensity' : gas
+        }
 
          with open("/home/pi/environment.json", "w") as jfp:
             json.dump(env, jfp)

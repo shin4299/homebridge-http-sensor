@@ -23,12 +23,32 @@ if not ccs.readData():
   with open("/home/pi/environment.csv", "a") as cvsf:
   	cvsf.write("{0}, {1:.2f}, {2:.2f}, {3:.2f}\n".format(timestamp, data['temperature'], data['co2'], data['tvoc']))
 
+  co2detected = 0;
+  if data['co2'] > 1000:
+	  co2detected = 1;
+
+  airQuality = 0;
+  if data['co2'] < 1000:
+     airQuality = 1;
+ elif data['co2'] < 5000:
+     airQuality = 2;
+ elif data['co2'] < 2000:
+     airQuality = 3;
+ elif air_quality_score < 1000:
+     airQuality = 4;
+  else:
+     airQuality = 5;
+
   env = {}
   env['environment'] = data
   env['timestamp'] = { 'timestamp' : data['timestamp'] }
-  env['temperature'] = { 'temperature' : data['temperature'] }
-  env['co2'] = { 'co2' : data['co2'] }
-  env['tvoc'] = { 'tvoc' : data['tvoc'] }
+  env['temperature'] = { 'CurrentTemperature' : data['temperature'] }
+  env['air'] = {
+  	'CarbonDioxideLevel' : data['co2'],
+	'VOCDensity' : data['tvoc'],
+	'CarbonDioxideDetected':co2detected,
+	'AirQuality':airQuality 
+  }
 
   with open("/home/pi/environment.json", "w") as jfp:
     json.dump(env, jfp)

@@ -1,33 +1,54 @@
 {
   "accessory": "HttpSensor",
+  "service": "CarbonDioxideSensor",
+  "optionCharacteristic":"CarbonDioxideLevel",
+  "name": "Lola CO2",
+  "apiBaseUrl": "http://192.168.1.65:3004/co2",
+  "forceRefreshDelay": 0
+},
+{
+  "accessory": "HttpSensor",
+  "service": "TemperatureSensor",
+  "name": "Lola Temperature",
+  "apiBaseUrl": "http://192.168.1.67:3004/temperature",
+  "forceRefreshDelay": 0
+},
+{
+  "accessory": "HttpSensor",
+  "service": "AirQualitySensor",
+  "optionCharacteristic":"PM2_5Density",
+  "name": "Lola Air VOC",
+  "apiBaseUrl": "http://192.168.1.67:3004/air",
+  "forceRefreshDelay": 0
+},
+
+{
+  "accessory": "HttpSensor",
   "service": "HumiditySensor",
   "name": "Miriam Humidity",
-  "apiBaseUrl": "http://192.168.1.66:3004/humidity",
-  "variableName": "humidity",
+  "apiBaseUrl": "http://192.168.1.67:3004/humidity",
   "forceRefreshDelay": 0
 },
 {
   "accessory": "HttpSensor",
   "service": "TemperatureSensor",
   "name": "Miriam Temperature",
-  "apiBaseUrl": "http://192.168.1.66:3004/temperature",
-  "variableName": "temperature",
+  "apiBaseUrl": "http://192.168.1.67:3004/temperature",
   "forceRefreshDelay": 0
 },
 {
   "accessory": "HttpSensor",
   "service": "AirQualitySensor",
   "name": "Miriam Air Quality",
-  "apiBaseUrl": "http://192.168.1.66:3004/airQuality",
-  "variableName": "airQuality",
+  "apiBaseUrl": "http://192.168.1.67:3004/air",
   "forceRefreshDelay": 0
 },
+
 {
   "accessory": "HttpSensor",
   "service": "HumiditySensor",
   "name": "Basement Humidity",
   "apiBaseUrl": "http://192.168.1.68:3004/humidity",
-  "variableName": "humidity",
   "forceRefreshDelay": 0
 },
 {
@@ -35,14 +56,12 @@
   "service": "TemperatureSensor",
   "name": "Basement Temperature",
   "apiBaseUrl": "http://192.168.1.68:3004/temperature",
-  "variableName": "temperature",
   "forceRefreshDelay": 0
 },
 {
   "accessory": "HttpSensor",
   "service": "AirQualitySensor",
   "name": "Basement Air Quality",
-  "apiBaseUrl": "http://192.168.1.68:3004/airQuality",
-  "variableName": "airQuality",
+  "apiBaseUrl": "http://192.168.1.68:3004/air",
   "forceRefreshDelay": 0
 }

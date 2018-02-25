@@ -19,7 +19,7 @@ function HttpSensor(log, config) {
   this.optionCharacteristic = config.optionCharacteristic || [];
   this.forceRefreshDelay = config.forceRefreshDelay || 0;
   this.log(this.name, this.apiroute);
-  this.enableSet = config.enableSet;
+  this.enableSet = config.enableSet || false;
   this.statusEmitters = [];
 }
 
@@ -37,16 +37,16 @@ HttpSensor.prototype = {
 
   getServices: function() {
     var getDispatch = function(callback, characteristic) {
-      var actionName = "get" + characteristic.displayName.replace(/\s/g, '')
-      this.log("getDispatch:actionName: ", actionName);
+      var parameterName = characteristic.displayName.replace(/\s/g, '')
+      this.log("getDispatch:parameterName: ", parameterName);
       request.get({
-        url: this.apiBaseUrl + "/" + actionName + this.apiSuffixUrl
+        url: this.apiBaseUrl + this.apiSuffixUrl
       }, function(err, response, body) {
         if (!err && response.statusCode == 200) {
-          this.log("getDispatch:returnedvalue: ", JSON.parse(body).value);
-          callback(null, JSON.parse(body).value);
+          this.log("getDispatch:returnedvalue: ", JSON.parse(body)[this.parameterName]);
+          callback(null, JSON.parse(body)[this.parameterName]);
         } else {
-          this.log("Error getting state: %s", actionName, err);
+          this.log("Error getting state: %s", parameterName, err);
           callback(err);
         }
       }.bind(this));
@@ -219,7 +219,7 @@ HttpSensor.prototype = {
     for (var characteristicIndex in newService.characteristics) {
       var characteristic = newService.characteristics[characteristicIndex];
       var compactName = characteristic.displayName.replace(/\s/g, '');
-			this.log("------------> CHARACTERISTIC "+newService.displayName+" : "+characteristic.displayName);
+			this.log("CHARACTERISTIC "+newService.displayName+" : "+characteristic.displayName);
       counters[characteristicIndex] = makeHelper(characteristic);
       characteristic.on('get', counters[characteristicIndex].getter.bind(this))
       characteristic.on('set', counters[characteristicIndex].setter.bind(this));
@@ -233,7 +233,7 @@ HttpSensor.prototype = {
         continue;
       }
 
-			this.log("------------> OPTION CHARACTERISTIC "+newService.displayName+" : "+characteristic.displayName);
+			this.log("OPTION CHARACTERISTIC "+newService.displayName+" : "+characteristic.displayName);
 
       optionCounters[characteristicIndex] = makeHelper(characteristic);
       characteristic.on('get', optionCounters[characteristicIndex].getter.bind(this))
@@ -245,22 +245,22 @@ HttpSensor.prototype = {
     function makeHelper(characteristic) {
       return {
         getter: function(callback) {
-          var actionName = "get" + characteristic.displayName.replace(/\s/g, '')
+          var parameterName = characteristic.displayName.replace(/\s/g, '');
           if (this.forceRefreshDelay == 0) {
             getDispatch(callback, characteristic);
           } else {
             var state = [];
-            var url = this.apiBaseUrl + "/" + actionName + this.apiSuffixUrl;
-            if (typeof this.statusEmitters[actionName] != "undefined") {
-              this.statusEmitters[actionName].interval.clear();
+            var url = this.apiBaseUrl + this.apiSuffixUrl;
+            if (typeof this.statusEmitters[parameterName] != "undefined") {
+              this.statusEmitters[parameterName].interval.clear();
             }
-            this.statusEmitters[actionName] = pollingtoevent(function(done) {
+            this.statusEmitters[parameterName] = pollingtoevent(function(done) {
               request.get({
-                url: this.apiBaseUrl + "/" + actionName + this.apiSuffixUrl
+                url: this.apiBaseUrl + this.apiSuffixUrl
               }, function(err, response, body) {
 
                 if (!err && response.statusCode == 200) {
-                  done(null, JSON.parse(body).value);
+                  done(null, JSON.parse(body)[this.parameterName]);
                 } else {
                   done(null, null);
                 }
@@ -268,18 +268,18 @@ HttpSensor.prototype = {
             }.bind(this), {
               longpolling: true,
               interval: this.forceRefreshDelay * 1000,
-              longpollEventName: actionName
+              longpollEventName: parameterName
             });
 
-            this.statusEmitters[actionName].on(actionName, function(data) {
+            this.statusEmitters[parameterName].on(parameterName, function(data) {
               this.enableSet = false;
-              state[actionName] = data;
+              state[parameterName] = data;
               characteristic.setValue(data);
               this.enableSet = true;
               //	}
             }.bind(this));
 
-            callback(null, state[actionName]);
+            callback(null, state[parameterName]);
           }
         },
         setter: function(value, callback) {
