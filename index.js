@@ -43,8 +43,8 @@ HttpSensor.prototype = {
         url: this.apiBaseUrl + this.apiSuffixUrl
       }, function(err, response, body) {
         if (!err && response.statusCode == 200) {
-					this.log("-----------------> getDispatch:returnedValue: ", parameterName, body, JSON.parse(body)[this.parameterName]);
-          callback(null, JSON.parse(body)[this.parameterName]);
+					this.log("-----------------> getDispatch:returnedValue: ", parameterName, body, JSON.parse(body)[this.parameterName].value);
+          callback(null, JSON.parse(body)[this.parameterName].value);
         } else {
           this.log("Error getting state: %s", parameterName, err);
           callback(err);
@@ -56,14 +56,15 @@ HttpSensor.prototype = {
       if (this.enableSet == false) {
         callback()
       } else {
-        var actionName = "set" + characteristic.displayName.replace(/\s/g, '')
+				var actionName = "set" + characteristic.displayName.replace(/\s/g, '')
+				var parameterName = characteristic.displayName.replace(/\s/g, '')
         this.log("setDispatch:actionName:value: ", actionName, value);
         request.get({
           url: this.apiBaseUrl + "/" + actionName + this.apiSuffixUrl + "/" + value
         }, function(err, response, body) {
           if (!err && response.statusCode == 200) {
-            this.log("setDispatch:returnedvalue: ", JSON.parse(body).value);
-            callback(null, JSON.parse(body).value);
+            this.log("setDispatch:returnedvalue: ", JSON.parse(body)[this.parameterName].value);
+            callback(null, JSON.parse(body)[this.parameterName].value);
           } else {
             this.log("Error getting state: %s", actionName, err);
             callback(err);
@@ -260,8 +261,8 @@ HttpSensor.prototype = {
               }, function(err, response, body) {
 
                 if (!err && response.statusCode == 200) {
-									this.log("-----------------> getDispatch:actionName:value: ", parameterName, body, JSON.parse(body)[this.parameterName]);
-                  done(null, JSON.parse(body)[this.parameterName]);
+									this.log("-----------------> getDispatch:actionName:value: ", parameterName, body, JSON.parse(body)[this.parameterName].value);
+                  done(null, JSON.parse(body)[this.parameterName].value);
                 } else {
                   done(null, null);
                 }
