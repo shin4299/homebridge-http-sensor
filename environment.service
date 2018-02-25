@@ -1,0 +1,17 @@
+[Unit]
+Description=Environment data
+
+[Service]
+ExecStart=/usr/local/bin/json-server --watch environment.json --port 3004
+Restart=always
+User=nobody
+Group=nogroup
+Environment=PATH=/usr/bin:/usr/local/bin
+Environment=NODE_ENV=production
+WorkingDirectory=/home/pi/
+StandardOutput=syslog
+StandardError=syslog
+SyslogIdentifier=json_environment_server
+
+[Install]
+WantedBy=multi-user.target
